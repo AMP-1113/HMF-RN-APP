@@ -9,15 +9,37 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
+import { initializeApp } from 'firebase/app'
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore'
 
 import Colors from '../../core/constants/Colors';
 import useColorScheme from '../../../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import ScheduleScreen from '../screens/ScheduleScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../../../types';
 import LinkingConfiguration from './LinkingConfiguration';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDdP5OkTcNuQxr9wh401kFmutm1kJ9GWt4",
+  authDomain: "hmf-app-dev.firebaseapp.com",
+  projectId: "hmf-app-dev",
+  storageBucket: "hmf-app-dev.appspot.com",
+  messagingSenderId: "812684204526",
+  appId: "1:812684204526:web:9a30559bf8c46d6c2c96ff",
+  measurementId: "G-1F34KPR5QS"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -86,9 +108,9 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={ScheduleScreen}
         options={{
-          title: 'Tab Two',
+          title: 'Schedule',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
