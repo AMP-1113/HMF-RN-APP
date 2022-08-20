@@ -22,9 +22,10 @@ import HomeScreen from '../screens/HomeScreen';
 import ScheduleScreen from '../screens/ScheduleScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../../../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import { firebaseAPIKey } from '../../../ignore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDdP5OkTcNuQxr9wh401kFmutm1kJ9GWt4",
+  apiKey: firebaseAPIKey,
   authDomain: "hmf-app-dev.firebaseapp.com",
   projectId: "hmf-app-dev",
   storageBucket: "hmf-app-dev.appspot.com",
