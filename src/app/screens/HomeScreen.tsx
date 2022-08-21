@@ -9,7 +9,7 @@ import { MonoText } from "../../core/components/StyledText";
 import Venue from "../../core/models/Venue";
 import { getVenues } from "../../core/service/VenueService";
 
-const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
+const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
   const [band, setBands] = useState<Band[]>([]);
   const [venue, setVenues] = useState<Venue[]>([]);
 
@@ -22,8 +22,8 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
       setVenues(results);
     });
 
-    console.log(band, venue)
-  }, [])
+    console.log(band, venue);
+  }, []);
 
   interface BandDisplayProps {
     performerName: string;
@@ -33,7 +33,7 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
 
   const BandDisplay = ({ performerName, members, genre }: BandDisplayProps) => {
     return (
-      <View style={{borderWidth: 1}}>
+      <View style={{ borderWidth: 1 }}>
         <MonoText> Artist: {performerName} </MonoText>
         <MonoText> Members: {members} </MonoText>
         <MonoText> Genre: {genre} </MonoText>
@@ -47,9 +47,13 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
     phoneNumber: string;
   }
 
-  const VenueDisplay = ({ venueName, address, phoneNumber }: VenueDisplayProps) => {
+  const VenueDisplay = ({
+    venueName,
+    address,
+    phoneNumber,
+  }: VenueDisplayProps) => {
     return (
-      <View style={{borderWidth: 1}}>
+      <View style={{ borderWidth: 1 }}>
         <MonoText> Name: {venueName} </MonoText>
         <MonoText> Address: {address} </MonoText>
         <MonoText> Phone: {phoneNumber} </MonoText>
@@ -71,9 +75,7 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
             enclave of Hamtramck
           </Text>
           <Spacer height={30} />
-          <MonoText style={{fontSize: 20}}>
-            2022 Lineup
-          </MonoText>
+          <MonoText style={{ fontSize: 20 }}>2022 Lineup</MonoText>
           <View>
             {band.map((item, index) => {
               return (
@@ -88,7 +90,7 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
               );
             })}
           </View>
-                    <View>
+          <View>
             {venue.map((item, index) => {
               return (
                 <>
@@ -108,7 +110,7 @@ const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
   );
 };
 
-export default TabOneScreen;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
