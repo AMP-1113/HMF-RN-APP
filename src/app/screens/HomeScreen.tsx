@@ -8,10 +8,13 @@ import Band from "../../core/models/Band";
 import { MonoText } from "../../core/components/StyledText";
 import Venue from "../../core/models/Venue";
 import { getVenues } from "../../core/service/VenueService";
+import { Festival } from "../../core/models/Festival";
+import { getFestival } from "../../core/service/FestivalService";
 
 const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
   const [band, setBands] = useState<Band[]>([]);
   const [venue, setVenues] = useState<Venue[]>([]);
+  const [festival, setFestival] = useState<Festival[]>([]);
 
   useEffect(() => {
     getBands().then((results) => {
@@ -20,6 +23,10 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
 
     getVenues().then((results) => {
       setVenues(results);
+    });
+
+    getFestival().then((results) => {
+      setFestival(results);
     });
 
     console.log(band, venue);
@@ -61,6 +68,18 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
     );
   };
 
+  const FestivalDisplay = ({ ...props }: Festival) => {
+    return (
+      <View>
+        <Text>{props.fullName} </Text>
+        <Text>{props.dates[0].start} </Text>
+        <Text>{props.description} </Text>
+        <Text>{props.locations[0]} </Text>
+        <Text>{props.performers[0].name} </Text>
+      </View>
+    );
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -76,7 +95,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
           </Text>
           <Spacer height={30} />
           <MonoText style={{ fontSize: 20 }}>2022 Lineup</MonoText>
-          <View>
+          {/* <View>
             {band.map((item, index) => {
               return (
                 <>
@@ -99,6 +118,30 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
                     address={item.address}
                     phoneNumber={item.venuePhone}
                   />
+                  <Spacer height={10} />
+                </>
+              );
+            })}
+          </View>
+          <View>
+            {venue.map((item, index) => {
+              return (
+                <>
+                  <VenueDisplay
+                    venueName={item.venueName}
+                    address={item.address}
+                    phoneNumber={item.venuePhone}
+                  />
+                  <Spacer height={10} />
+                </>
+              );
+            })}
+          </View> */}
+          <View>
+            {festival.map((item, index) => {
+              return (
+                <>
+                  {FestivalDisplay(item)}
                   <Spacer height={10} />
                 </>
               );
