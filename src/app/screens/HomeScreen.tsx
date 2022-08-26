@@ -4,7 +4,7 @@ import { RootTabScreenProps } from "../../../types";
 import Spacer from "../../core/components/Spacer";
 import { getBands } from "../../core/service/BandService";
 import { useEffect, useState } from "react";
-import Band from "../../core/models/Band";
+import { Band, Member } from "../../core/models/Band";
 import { MonoText } from "../../core/components/StyledText";
 import Venue from "../../core/models/Venue";
 import { getVenues } from "../../core/service/VenueService";
@@ -34,7 +34,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
 
   interface BandDisplayProps {
     performerName: string;
-    members: string;
+    members: Member[];
     genre: string;
   }
 
@@ -42,7 +42,15 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
     return (
       <View style={{ borderWidth: 1 }}>
         <MonoText> Artist: {performerName} </MonoText>
-        <MonoText> Members: {members} </MonoText>
+        {members.map((item, index) => {
+          return (
+            <>
+              <MonoText>Name:{'\n'}{item.name}</MonoText>
+              <MonoText>Associated Bands:{'\n'}{item.associatedArtists}</MonoText>
+              <MonoText>Instruments:{'\n'}{item.instruments}</MonoText>
+            </>
+          );
+        })}
         <MonoText> Genre: {genre} </MonoText>
       </View>
     );
@@ -95,7 +103,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
           </Text>
           <Spacer height={30} />
           <MonoText style={{ fontSize: 20 }}>2022 Lineup</MonoText>
-          {/* <View>
+          <View>
             {band.map((item, index) => {
               return (
                 <>
@@ -136,7 +144,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
                 </>
               );
             })}
-          </View> */}
+          </View>
           <View>
             {festival.map((item, index) => {
               return (
