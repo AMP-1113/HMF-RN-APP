@@ -1,6 +1,6 @@
 import { firebaseAPIKey } from '../../../ignore';
 import axios from "axios";
-import Band from "../models/Band";
+import {Band} from "../models/Band";
 
 // const firebaseConfig = {
 //   apiKey: firebaseAPIKey,
