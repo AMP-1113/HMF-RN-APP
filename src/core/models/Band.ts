@@ -6,6 +6,7 @@ export interface Band {
     numOfMembers: number;
     performerName: string;
     isActive: boolean;
+    id: string
 }
 
 export interface Member {

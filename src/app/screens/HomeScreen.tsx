@@ -16,21 +16,21 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
   const [venue, setVenues] = useState<Venue[]>([]);
   const [festival, setFestival] = useState<Festival[]>([]);
 
-  useEffect(() => {
-    getBands().then((results) => {
-      setBands(results);
-    });
+  // useEffect(() => {
+  //   getBands().then((results) => {
+  //     setBands(results);
+  //   });
 
-    getVenues().then((results) => {
-      setVenues(results);
-    });
+  //   getVenues().then((results) => {
+  //     setVenues(results);
+  //   });
 
-    getFestival().then((results) => {
-      setFestival(results);
-    });
+  //   getFestival().then((results) => {
+  //     setFestival(results);
+  //   });
 
-    console.log(band, venue);
-  }, []);
+  //   console.log(band, venue);
+  // }, []);
 
   interface BandDisplayProps {
     performerName: string;

@@ -1,31 +1,81 @@
-import { StyleSheet } from 'react-native';
+import { useEffect, useState } from "react";
+import { StyleSheet, Image, FlatList } from "react-native";
+import LineupBandCard from "../../core/components/LineupBandCard";
+import Spacer from "../../core/components/Spacer";
+import { MonoTextBold } from "../../core/components/StyledText";
+import { Text, View } from "../../core/components/Themed";
+import { Band } from "../../core/models/Band";
+import { getBands } from "../../core/service/BandService";
 
-import EditScreenInfo from '../../core/components/EditScreenInfo';
-import { Text, View } from '../../core/components/Themed';
-
-export default function LineupScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Lineup</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabThreeScreen.tsx" />
-    </View>
-  );
+interface FlatListParams {
+  item: Band;
 }
+
+const LineupScreen = () => {
+  const [bands, setBands] = useState<Band[]>([]);
+  const [isReloading, setIsReloading] = useState(false);
+
+  useEffect(() => {
+    getBands().then((results) => {
+      setBands(results);
+    });
+  }, []);
+
+  const LineupScreenHeader = () => {
+    return (
+      <View style={styles.header}>
+        <Spacer height={10} />
+        <Image
+          source={require("../../../assets/images/hmf-logo.png")}
+          style={styles.logo}
+        />
+        <Spacer height={10} />
+        <MonoTextBold style={{ fontSize: 24 }}>2022 Lineup</MonoTextBold>
+        <View
+          style={styles.separator}
+          lightColor="#eee"
+          darkColor="rgba(255,255,255,0.1)"
+        />
+      </View>
+    );
+  };
+
+  const renderBand = ({ item }: FlatListParams) => {
+    return (
+      <View>
+        <LineupBandCard band={item} />
+      </View>
+    );
+  };
+
+  return (
+    <FlatList
+      ListHeaderComponent={LineupScreenHeader}
+      data={bands}
+      renderItem={renderBand}
+      refreshing={isReloading}
+    />
+  );
+};
+
+export default LineupScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flex: 1,
+    // alignItems: "center",
+    // justifyContent: "center",
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  header: {
+    alignItems: "center",
+  },
+  logo: {
+    height: 180,
+    width: 180,
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
 });
