@@ -29,6 +29,9 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import LineupScreen from "../screens/LineupScreen";
 import MoreScreen from "../screens/MoreScreen";
 import BandDetailsScreen from "../screens/BandDetails";
+import { UserInterfaceIdiom } from "expo-constants";
+import BandStackNavigator from "./LineupStackNavigator";
+import LineupStackNavigator from "./LineupStackNavigator";
 
 export default function Navigation({
   colorScheme,
@@ -67,11 +70,6 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
-      <Stack.Screen
-      name="BandDetails"
-      component={BandDetailsScreen}
-      options={{title: "Band Details"}}
-      />
     </Stack.Navigator>
   );
 }
@@ -125,7 +123,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabThree"
-        component={LineupScreen}
+        component={LineupStackNavigator}
         options={{
           title: "Lineup",
           tabBarIcon: ({ color }) => <TabBarIcon name="guitar-electric" color={color} />,

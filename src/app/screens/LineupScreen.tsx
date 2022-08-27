@@ -48,7 +48,7 @@ const LineupScreen = ({navigation}: LineupScreenProps) => {
     return (
       <View>
         <LineupBandCard band={item} action={() => {
-          navigation.navigate('BandDetails')
+          navigation.navigate('BandDetails', item )
         }} />
         <Text>{item.performerName} </Text>
       </View>
