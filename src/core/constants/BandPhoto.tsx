@@ -11,7 +11,7 @@ const TART = "Tart";
 const BandPhoto = ({ id, name, size }: BandPhotoProps) => {
   return (
     <Image
-      source={require("../../../assets/images/tart.jpeg")}
+      source={require("../../../assets/images/band-photos/tart.jpeg")}
       style={{ width: size, height: size }}
     />
   );
