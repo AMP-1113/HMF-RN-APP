@@ -28,6 +28,7 @@ import {
 import LinkingConfiguration from "./LinkingConfiguration";
 import LineupScreen from "../screens/LineupScreen";
 import MoreScreen from "../screens/MoreScreen";
+import BandDetailsScreen from "../screens/BandDetails";
 
 export default function Navigation({
   colorScheme,
@@ -66,6 +67,11 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
+      <Stack.Screen
+      name="BandDetails"
+      component={BandDetailsScreen}
+      options={{title: "Band Details"}}
+      />
     </Stack.Navigator>
   );
 }
