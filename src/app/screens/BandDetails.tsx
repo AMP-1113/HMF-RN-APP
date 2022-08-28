@@ -1,25 +1,45 @@
-import { NavigationProp, ParamListBase, Route } from "@react-navigation/native";
-import { BandStackParamList } from "../../../types";
+import { ScrollView, StyleSheet } from "react-native";
+import { MonoTextBold } from "../../core/components/StyledText";
 import { Text, View } from "../../core/components/Themed";
-import { LineupRootScreenPops } from "../navigation/LineupStackNavigator";
+import { LineupRootScreenProps } from "../navigation/LineupStackNavigator";
 
-type BandDetailsScreenProps = LineupRootScreenPops<"BandDetails">;
+type BandDetailsScreenProps = LineupRootScreenProps<"BandDetails">;
 
 const BandDetailsScreen = ({ route }: BandDetailsScreenProps) => {
   return (
-    <View>
-      <Text>Band name: {route.params.performerName}</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <MonoTextBold style={{ fontSize: 24 }}>
+          {route.params.performerName}
+        </MonoTextBold>
 
-      {route.params.members.map((member) => {
-        return (
-          <>
-            <Text>Name: {member.name}</Text>
-            <Text>Instruments: {member.instruments}</Text>
-          </>
-        );
-      })}
-    </View>
+        {route.params.members.map((member) => {
+          return (
+            <>
+              <Text>Name: {member.name}</Text>
+              <Text>Instruments: {member.instruments}</Text>
+            </>
+          );
+        })}
+      </View>
+    </ScrollView>
   );
 };
 
 export default BandDetailsScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "justify",
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: "80%",
+  },
+});

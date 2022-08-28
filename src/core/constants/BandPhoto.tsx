@@ -18,3 +18,4 @@ const BandPhoto = ({ id, name, size }: BandPhotoProps) => {
 };
 
 export default BandPhoto;
+

@@ -8,7 +8,7 @@ import { BandStackParamList } from "../../../types";
 import BandDetailsScreen from "../screens/BandDetails";
 import LineupScreen from "../screens/LineupScreen";
 
-export type LineupRootScreenPops<Screen extends keyof BandStackParamList> =
+export type LineupRootScreenProps<Screen extends keyof BandStackParamList> =
   NativeStackScreenProps<BandStackParamList, Screen>;
 
 const Stack = createNativeStackNavigator<BandStackParamList>();
