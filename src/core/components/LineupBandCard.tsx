@@ -1,22 +1,23 @@
 import { Text, View } from "../../core/components/Themed";
 import { StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Band } from "../models/Band";
-import BandPhoto from "../constants/BandPhoto";
+import BandPhoto from "./BandPhoto";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface LineupBandCardProps {
   band: Band;
+  action: () => void; 
 }
 
-const LineupBandCard = ({ band }: LineupBandCardProps) => {
+const LineupBandCard = ({ band, action }: LineupBandCardProps) => {
   return (
-    <TouchableOpacity style={styles.container}>
-      <BandPhoto size={100} />
+    <TouchableOpacity style={styles.container} onPress={action}>
+      <BandPhoto size={100} name={band.performerName} />
       <Text style={{ fontSize: 20 }}>{band.performerName} </Text>
       <MaterialCommunityIcons name="chevron-right" size={50} color="black" />
     </TouchableOpacity>
   );
-};
+}; 
 
 export default LineupBandCard;
 

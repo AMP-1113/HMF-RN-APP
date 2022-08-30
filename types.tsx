@@ -6,6 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Band } from './src/core/models/Band';
 
 declare global {
   namespace ReactNavigation {
@@ -18,6 +19,11 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
 };
+
+export type BandStackParamList = {
+  Lineup: undefined;
+  BandDetails: Band;
+}
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,

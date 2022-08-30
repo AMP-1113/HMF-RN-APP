@@ -1,3 +1,4 @@
+import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { StyleSheet, Image, FlatList } from "react-native";
 import LineupBandCard from "../../core/components/LineupBandCard";
@@ -7,18 +8,22 @@ import { Text, View } from "../../core/components/Themed";
 import { Band } from "../../core/models/Band";
 import { getBands } from "../../core/service/BandService";
 
+interface LineupScreenProps {
+  navigation: NavigationProp<ParamListBase>;
+}
 interface FlatListParams {
   item: Band;
 }
 
-const LineupScreen = () => {
+const LineupScreen = ({ navigation }: LineupScreenProps) => {
   const [bands, setBands] = useState<Band[]>([]);
   const [isReloading, setIsReloading] = useState(false);
 
   useEffect(() => {
-    getBands().then((results) => {
-      setBands(results);
-    });
+    getBands()
+      .then((results) => {
+        setBands(results);
+      })
   }, []);
 
   const LineupScreenHeader = () => {
@@ -43,7 +48,12 @@ const LineupScreen = () => {
   const renderBand = ({ item }: FlatListParams) => {
     return (
       <View>
-        <LineupBandCard band={item} />
+        <LineupBandCard
+          band={item}
+          action={() => {
+            navigation.navigate("BandDetails", item);
+          }}
+        />
       </View>
     );
   };
