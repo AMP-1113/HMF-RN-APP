@@ -11,21 +11,28 @@ interface BandPhotoProps {
 
 // have to write a switch statment for bands
 
-const handgrenades = 'handgrenades.jpg';
-const tart = 'tart.jpeg';
+const handgrenades = 'handgrenades';
+const tart = 'tart';
 
 
 const BandPhoto = ({ id, name, size }: BandPhotoProps) => {
   const [url, setURL ] = useState<string>();
+  const lowercaseName = name?.toLowerCase();
+  
 
   useEffect(() => {
     const getBandPhoto = async () => {
-      const bandPhotosRef = ref(storage, `band-photos/${tart}`);
+      const bandPhotosRef = ref(storage, `band-photos/${lowercaseName}.png`);
       await getDownloadURL(bandPhotosRef).then((convertedURL) => {
         setURL(convertedURL);
       })
+      .catch((error) => {
+        reportError(new Error(`Photo could not be found: ${error.message}`))
+        return Promise.reject();
+      })
     }
     getBandPhoto();
+    
   })
 
   return (

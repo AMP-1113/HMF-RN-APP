@@ -1,7 +1,7 @@
 import { Text, View } from "../../core/components/Themed";
 import { StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Band } from "../models/Band";
-import BandPhoto from "../constants/BandPhoto";
+import BandPhoto from "./BandPhoto";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface LineupBandCardProps {

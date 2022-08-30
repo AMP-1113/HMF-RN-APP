@@ -23,6 +23,7 @@ const LineupScreen = ({navigation}: LineupScreenProps) => {
     getBands().then((results) => {
       setBands(results);
     });
+    console.log(bands)
   }, []);
 
   const LineupScreenHeader = () => {
@@ -50,7 +51,6 @@ const LineupScreen = ({navigation}: LineupScreenProps) => {
         <LineupBandCard band={item} action={() => {
           navigation.navigate('BandDetails', item )
         }} />
-        <Text>{item.performerName} </Text>
       </View>
     );
   };
