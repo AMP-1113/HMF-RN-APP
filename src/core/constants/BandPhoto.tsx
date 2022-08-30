@@ -10,6 +10,7 @@ interface BandPhotoProps {
 }
 
 // have to write a switch statment for bands
+
 const handgrenades = 'handgrenades.jpg';
 const tart = 'tart.jpeg';
 
