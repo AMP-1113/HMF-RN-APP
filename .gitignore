@@ -10,7 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 .env
-ignore.ts
+firebase.ts
 
 # macOS
 .DS_Store
