@@ -1,5 +1,6 @@
 {
   "expo": {
+    "owner": "paddenadam",
     "name": "hmf-frontend",
     "slug": "hmf-frontend",
     "version": "1.0.0",
