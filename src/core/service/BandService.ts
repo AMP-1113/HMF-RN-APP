@@ -6,7 +6,6 @@ export function getBands(): Promise<Band[]> {
     .get("https://us-central1-hmf-app-dev.cloudfunctions.net/bandData")
     .then((res) => res.data)
     .catch((error) => {
-      reportError(new Error(`getBand failed: ${error.message}`));
       return Promise.reject();
     });
 }

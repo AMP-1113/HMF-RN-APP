@@ -15,15 +15,15 @@ interface FlatListParams {
   item: Band;
 }
 
-const LineupScreen = ({navigation}: LineupScreenProps) => {
+const LineupScreen = ({ navigation }: LineupScreenProps) => {
   const [bands, setBands] = useState<Band[]>([]);
   const [isReloading, setIsReloading] = useState(false);
 
   useEffect(() => {
-    getBands().then((results) => {
-      setBands(results);
-    });
-    console.log(bands)
+    getBands()
+      .then((results) => {
+        setBands(results);
+      })
   }, []);
 
   const LineupScreenHeader = () => {
@@ -48,9 +48,12 @@ const LineupScreen = ({navigation}: LineupScreenProps) => {
   const renderBand = ({ item }: FlatListParams) => {
     return (
       <View>
-        <LineupBandCard band={item} action={() => {
-          navigation.navigate('BandDetails', item )
-        }} />
+        <LineupBandCard
+          band={item}
+          action={() => {
+            navigation.navigate("BandDetails", item);
+          }}
+        />
       </View>
     );
   };

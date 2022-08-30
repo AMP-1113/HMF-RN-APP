@@ -12,7 +12,7 @@ interface LineupBandCardProps {
 const LineupBandCard = ({ band, action }: LineupBandCardProps) => {
   return (
     <TouchableOpacity style={styles.container} onPress={action}>
-      <BandPhoto size={100} />
+      <BandPhoto size={100} name={band.performerName} />
       <Text style={{ fontSize: 20 }}>{band.performerName} </Text>
       <MaterialCommunityIcons name="chevron-right" size={50} color="black" />
     </TouchableOpacity>
