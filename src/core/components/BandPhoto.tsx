@@ -26,6 +26,22 @@ const getBandName = (bandName: string) => {
       return bandPhotoFileNames.actCasual
     case "GOLD CRAYON":
       return bandPhotoFileNames.goldCrayon
+    case "CITIZEN SMILE":
+      return bandPhotoFileNames.citizenSmile
+    case "BEND":
+      return bandPhotoFileNames.bend
+    case "BIG B AND THE ACTUAL PROOF":
+      return bandPhotoFileNames.bigB
+    case "75 DAYS OF SUN":
+      return bandPhotoFileNames.seventyFiveDaysOfSun
+    case "ANTHONY RETKA":
+      return bandPhotoFileNames.anthonyRetka
+    case "BLOODY BUTTERFLIES":
+      return bandPhotoFileNames.bloodyButterflies
+    case "AUDRA KUBAT":
+      return bandPhotoFileNames.audraKubat
+    case "BEN STALETS":
+      return bandPhotoFileNames.benStalets
     default:
       return "default";
   }
